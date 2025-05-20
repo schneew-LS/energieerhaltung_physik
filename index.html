@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energieversorgung verstehen | Physikunterricht</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+            --card-bg: #fff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        .dark-mode {
+            --primary-color: #34495e;
+            --secondary-color: #2980b9;
+            --accent-color: #c0392b;
+            --text-color: #ecf0f1;
+            --bg-color: #2c3e50;
+            --card-bg: #34495e;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            transition: var(--transition);
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--secondary-color);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent-color);
+        }
+
+        nav {
+            background-color: var(--primary-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav li {
+            margin: 0 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .image-container figcaption {
+            margin-top: 0.5rem;
+            font-style: italic;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .grid-item {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .grid-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        tr:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .interactive {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+        }
+
+        button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        button:hover {
+            background-color: var(--accent-color);
+        }
+
+        .result {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: rgba(52, 152, 219, 0.1);
+            border-left: 4px solid var(--secondary-color);
+            border-radius: 4px;
+        }
+
+        .chart-container {
+            width: 100%;
+            height: 400px;
+            margin: 2rem 0;
+        }
+
+        .comparison {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .comparison-item {
+            flex: 1;
+            min-width: 250px;
+            margin: 1rem;
+            text-align: center;
+        }
+
+        .comparison-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        .sources {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animationen */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="theme-toggle" id="themeToggle">Dark Mode</button>
+        <h1>Energieversorgung verstehen</h1>
+        <p class="subtitle">von Lino Schasse</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#reversibel">Reversible Vorgänge</a></li>
+            <li><a href="#entropie">Entropie</a></li>
+            <li><a href="#energietraeger">Energieträger</a></li>
+            <li><a href="#energiedorf">Energiedorf</a></li>
+            <li><a href="#energiebilanz">Persönliche Bilanz</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Abschnitt 1: Reversible und irreversible Vorgänge -->
+        <section id="reversibel" class="card animate">
+            <h2>Reversible und irreversible Vorgänge</h2>
+            
+            <div class="grid">
+                <div class="grid-item">
+                    <h3>Was sind reversible Vorgänge?</h3>
+                    <p>Reversible Vorgänge sind Prozesse, die vollständig rückgängig gemacht werden können, ohne dass Energie verloren geht oder Entropie erzeugt wird. Ein Beispiel ist eine ideal schwingende Schaukel ohne Reibung.</p>
+                    <div class="image-container">
+                        <img src="https://www.spiel-preis.de/magazin/wp-content/uploads/2022/03/exit-aksent-lektorn-av-tra-med-2-sitsgunga-gra-2-e1647342847268.jpg" alt="Schaukel als Beispiel für reversible Vorgänge">
+                        <figcaption>Eine Schaukel ohne Reibung wäre ein reversibler Vorgang</figcaption>
+                    </div>
+                </div>
+                
+                <div class="grid-item">
+                    <h3>Irreversible Prozesse</h3>
+                    <p>Irreversible Vorgänge laufen nur in eine Richtung ab und können nicht ohne Energieaufwand rückgängig gemacht werden. Beispiele sind das Auflösen einer Brausetablette oder das Vermischen von Flüssigkeiten.</p>
+                    <div class="image-container">
+                        <img src="https://media.istockphoto.com/id/106386786/de/foto/schmerzmittel-aufl%C3%B6sen-in-wasser.jpg?s=612x612&w=0&k=20&c=P0_CAyFoOeWCZoGaZmJoOuWI5I7kMPTiGlFQZHdE9vQ=" alt="Brausetablette als Beispiel für irreversible Vorgänge">
+                        <figcaption>Das Auflösen einer Brausetablette ist irreversibel</figcaption>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Warum sind manche Vorgänge irreversibel?</h3>
+            <p>Die Irreversibilität hängt mit der Entropie zusammen. Bei vielen Prozessen wird Energie in Form von Wärme an die Umgebung abgegeben, was zu einer Zunahme der Entropie im Universum führt. Diese Energie kann nicht ohne weiteres zurückgewonnen werden.</p>
+            
+            <div class="interactive">
+                <h3>Interaktives Experiment: Reversible vs. irreversible Vorgänge</h3>
+                <p>Wählen Sie einen Vorgang aus und sehen Sie, ob er reversibel oder irreversibel ist:</p>
+                
+                <div class="form-group">
+                    <label for="processSelect">Vorgang auswählen:</label>
+                    <select id="processSelect">
+                        <option value="">-- Bitte auswählen --</option>
+                        <option value="pendel">Pendelbewegung (ohne Reibung)</option>
+                        <option value="brause">Auflösen einer Brausetablette</option>
+                        <option value="fall">Fall eines Balles (mit Reibung)</option>
+                        <option value="mischen">Vermischen von Wasser und Tinte</option>
+                    </select>
+                </div>
+                
+                <button id="checkProcess">Überprüfen</button>
+                
+                <div id="processResult" class="result" style="display: none;">
+                    <h4>Ergebnis:</h4>
+                    <p id="processExplanation"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Abschnitt 2: Entropie -->
+        <section id="entropie" class="card animate delay-1">
+            <h2>Entropie und ihre Bedeutung für Energieumwandlungen</h2>
+            
+            <p>Entropie ist ein Maß für die Unordnung in einem System und spielt eine entscheidende Rolle bei der Unterscheidung zwischen reversiblen und irreversiblen Vorgängen.</p>
+            
+            <div class="image-container">
+                <img src="https://www.preussenelektra.de/content/dam/revu-global/preussenelektra/images/UnsereAufgabe/Anlagenrueckbauen/news/2020/%C3%BCberblickseite/KKG_Rueckbau.jpg/jcr:content/renditions/cq5dam.web.1280.720.jpeg" alt="Kraftwerk mit Kühlturm">
+                <figcaption>Kraftwerke müssen Wärme über Kühltürme abgeben - ein Beispiel für Entropie in der Praxis</figcaption>
+            </div>
+            
+            <h3>Entropie in Wärmekraftwerken</h3>
+            <p>In Wärmekraftwerken wird nur ein Teil der zugeführten Energie in elektrische Energie umgewandelt. Ein beträchtlicher Teil muss als Wärme über Kühltürme abgegeben werden, weil bei der Energieumwandlung Entropie entsteht, die abgeführt werden muss.</p>
+            
+            <div class="grid">
+                <div class="grid-item">
+                    <h3>Energiefluss in einem Kraftwerk</h3>
+                    <p>Die Grafik zeigt den Energiefluss in einem typischen Wärmekraftwerk:</p>
+                    <div class="image-container">
+                        <svg width="100%" height="400" viewBox="0 0 800 300" id="energyFlowChart">
+                            <!-- SVG wird per JavaScript dynamisch erstellt -->
+                        </svg>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <h3>Wirkungsgrad und Entropie</h3>
+                    <p>Der Wirkungsgrad η eines Kraftwerks ist gegeben durch:</p>
+                    <p style="text-align: center; font-size: 1.5rem;">η = 1 - T<sub>kalt</sub>/T<sub>warm</sub></p>
+                    <p>wobei T<sub>kalt</sub> die Temperatur des Kühlsystems und T<sub>warm</sub> die Temperatur der Brennkammer ist.</p>
+                    <p>Je höher die Temperaturdifferenz, desto höher der mögliche Wirkungsgrad.</p>
+                </div>
+            </div>
+            
+            <h3>Anwendung: Wasser erhitzen</h3>
+            <p>Beim Erhitzen von Wasser wird Energie zugeführt und Entropie erzeugt. Die Entropieänderung ΔS kann berechnet werden durch:</p>
+            <p style="text-align: center; font-size: 1.2rem;">ΔS = Q / T</p>
+            <p>wobei Q die zugeführte Wärmeenergie und T die absolute Temperatur ist.</p>
+            
+            <div class="interactive">
+                <h3>Entropie-Rechner für Wassererwärmung</h3>
+                
+                <div class="form-group">
+                    <label for="waterMass">Wassermenge (kg):</label>
+                    <input type="number" id="waterMass" min="0.1" step="0.1" value="1">
+                </div>
+                
+                <div class="form-group">
+                    <label for="startTemp">Anfangstemperatur (°C):</label>
+                    <input type="number" id="startTemp" min="0" max="99" value="20">
+                </div>
+                
+                <div class="form-group">
+                    <label for="endTemp">Endtemperatur (°C):</label>
+                    <input type="number" id="endTemp" min="1" max="100" value="80">
+                </div>
+                
+                <button id="calculateEntropy">Berechnen</button>
+                
+                <div id="entropyResult" class="result" style="display: none;">
+                    <h4>Ergebnis:</h4>
+                    <p>Benötigte Energie: <span id="energyNeeded"></span> kJ</p>
+                    <p>Entropieänderung: <span id="entropyChange"></span> kJ/K</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Abschnitt 3: Energieträger und Energiequellen -->
+        <section id="energietraeger" class="card animate delay-2">
+            <h2>Energieträger und Energiequellen</h2>
+            
+            <h3>Primär- vs. Sekundärenergie</h3>
+            <p><strong>Primärenergie</strong> ist die Energie, wie sie in der Natur vorkommt (z.B. Kohle, Erdöl, Sonnenstrahlung). <strong>Sekundärenergie</strong> ist die umgewandelte Form, die zum Verbraucher gelangt (z.B. Strom, Benzin).</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Energieträger</th>
+                        <th>Typ</th>
+                        <th>Vor- und Nachteile</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Kohle</td>
+                        <td>Nicht-regenerativ</td>
+                        <td>Gut speicherbar, aber hohe CO₂-Emissionen</td>
+                    </tr>
+                    <tr>
+                        <td>Erdöl</td>
+                        <td>Nicht-regenerativ</td>
+                        <td>Vielseitig einsetzbar, aber begrenzte Reserven</td>
+                    </tr>
+                    <tr>
+                        <td>Erdgas</td>
+                        <td>Nicht-regenerativ</td>
+                        <td>Geringere Emissionen als Kohle, aber Methanverluste</td>
+                    </tr>
+                    <tr>
+                        <td>Kernenergie</td>
+                        <td>Nicht-regenerativ</td>
+                        <td>CO₂-arm, aber radioaktiver Abfall</td>
+                    </tr>
+                    <tr>
+                        <td>Windkraft</td>
+                        <td>Regenerativ</td>
+                        <td>Unerschöpflich, aber wetterabhängig</td>
+                    </tr>
+                    <tr>
+                        <td>Solarenergie</td>
+                        <td>Regenerativ</td>
+                        <td>Überall verfügbar, aber tageszeitabhängig</td>
+                    </tr>
+                    <tr>
+                        <td>Wasserkraft</td>
+                        <td>Regenerativ</td>
+                        <td>Konstant verfügbar, aber Standortabhängig</td>
+                    </tr>
+                    <tr>
+                        <td>Biomasse</td>
+                        <td>Regenerativ</td>
+                        <td>Speicherbar, aber Flächenkonkurrenz</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Energiemix im internationalen Vergleich</h3>
+            
+            <div class="interactive">
+                <div class="form-group">
+                    <label for="countrySelect">Land auswählen:</label>
+                    <select id="countrySelect">
+                        <option value="deutschland">Deutschland</option>
+                        <option value="frankreich">Frankreich</option>
+                        <option value="usa">USA</option>
+                        <option value="china">China</option>
+                        <option value="norwegen">Norwegen</option>
+                    </select>
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="energyMixChart"></canvas>
+                </div>
+            </div>
+            
+            <h3>Blockheizkraftwerke (BHKW)</h3>
+            <p>BHKWs nutzen das Prinzip der Kraft-Wärme-Kopplung, bei dem gleichzeitig Strom und Wärme erzeugt werden. Dadurch können Wirkungsgrade von über 90% erreicht werden.</p>
+            
+            <div class="grid">
+                <div class="grid-item">
+                    <h4>Funktionsweise</h4>
+                    <p>Ein Verbrennungsmotor treibt einen Generator zur Stromerzeugung an. Die Abwärme wird zur Heizung genutzt.</p>
+                </div>
+                <div class="grid-item">
+                    <h4>Vorteile</h4>
+                    <ul>
+                        <li>Hohe Gesamtwirkungsgrade</li>
+                        <li>Dezentrale Energieversorgung</li>
+                        <li>Flexibel einsetzbar</li>
+                    </ul>
+                </div>
+                <div class="grid-item">
+                    <h4>Nachteile</h4>
+                    <ul>
+                        <li>Höhere Investitionskosten</li>
+                        <li>Abhängig von Brennstoffpreisen</li>
+                        <li>Wartungsintensiv</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="image-container">
+                <svg width="100%" height="400" viewBox="0 0 800 400" id="bhkwDiagram">
+                    <!-- SVG wird per JavaScript dynamisch erstellt -->
+                </svg>
+                <figcaption>Schematischer Aufbau eines Blockheizkraftwerks</figcaption>
+            </div>
+        </section>
+
+        <!-- Abschnitt 4: Energiedorf Wildpoldsried -->
+        <section id="energiedorf" class="card animate delay-3">
+            <h2>Energiedorf Wildpoldsried: Lokale Energiewende in der Praxis</h2>
+            
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Dorf mit Windrädern">
+                <figcaption>Wildpoldsried im Allgäu - ein Vorreiter der Energiewende</figcaption>
+            </div>
+            
+            <p>Das Dorf Wildpoldsried im Allgäu hat gezeigt, wie eine weitgehend autarke Energieversorgung mit erneuerbaren Energien funktionieren kann. Die Gemeinde erzeugt etwa 800% ihres Bedarfs an elektrischer Energie und 55% des Wärmebedarfs selbst.</p>
+            
+            <h3>Maßnahmen in Wildpoldsried</h3>
+            
+            <div class="grid">
+                <div class="grid-item">
+                    <h4>Windenergie</h4>
+                    <p>Ein von Bürgern betriebener Windpark liefert einen Großteil des Stroms.</p>
+                </div>
+                <div class="grid-item">
+                    <h4>Biogas und BHKW</h4>
+                    <p>Biogasanlagen und Blockheizkraftwerke speisen ein lokales Fernwärmenetz.</p>
+                </div>
+                <div class="grid-item">
+                    <h4>Photovoltaik</h4>
+                    <p>Alle kommunalen Gebäude wurden mit PV-Anlagen ausgestattet.</p>
+                </div>
+                <div class="grid-item">
+                    <h4>Smart Grid</h4>
+                    <p>Wissenschaftliche Datenerfassung optimiert Erzeugung und Verbrauch.</p>
+                </div>
+            </div>
+            
+            <h3>Energiebilanz von Wildpoldsried</h3>
+            
+            <div class="chart-container">
+                <canvas id="wildpoldsriedChart"></canvas>
+            </div>
+            
+            <h3>Weitere Energiedörfer</h3>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ort</th>
+                        <th>Land</th>
+                        <th>Besonderheiten</th>
+                        <th>Autarkiegrad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Feldheim</td>
+                        <td>Deutschland</td>
+                        <td>Erstes energieautarkes Dorf Deutschlands</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>Güssing</td>
+                        <td>Österreich</td>
+                        <td>Pionier in Bioenergie</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>Samso</td>
+                        <td>Dänemark</td>
+                        <td>Insel mit 100% erneuerbarer Energie</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>Jühnde</td>
+                        <td>Deutschland</td>
+                        <td>Bioenergiedorf mit Biogasanlage</td>
+                        <td>100%</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="interactive">
+                <h3>Planspiel: Energiedorf gestalten</h3>
+                <p>Simulieren Sie die Umsetzung der Energiewende für eine Gemeinde:</p>
+                
+                <div class="form-group">
+                    <label for="communityType">Gemeindetyp:</label>
+                    <select id="communityType">
+                        <option value="dorf">Dorf (bis 5.000 Einwohner)</option>
+                        <option value="stadt">Kleinstadt (10.000-50.000 Einwohner)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="energyDemand">Jährlicher Energiebedarf (MWh):</label>
+                    <input type="number" id="energyDemand" min="1000" step="100" value="5000">
+                </div>
+                
+                <h4>Verfügbare Ressourcen:</h4>
+                <div class="form-group">
+                    <label for="windPotential">Windpotential (1-10):</label>
+                    <input type="range" id="windPotential" min="1" max="10" value="5">
+                    <span id="windValue">5</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="solarPotential">Sonnenstunden/Jahr:</label>
+                    <input type="range" id="solarPotential" min="800" max="2200" step="50" value="1500">
+                    <span id="solarValue">1500</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="biomassPotential">Biomassepotential (1-10):</label>
+                    <input type="range" id="biomassPotential" min="1" max="10" value="5">
+                    <span id="biomassValue">5</span>
+                </div>
+                
+                <button id="simulateEnergy">Simulieren</button>
+                
+                <div id="simulationResult" class="result" style="display: none;">
+                    <h4>Ergebnis der Simulation:</h4>
+                    <p>Empfohlener Energiemix:</p>
+                    <div class="chart-container" style="height: 300px;">
+                        <canvas id="simulationChart"></canvas>
+                    </div>
+                    <p>Prognostizierter Autarkiegrad: <span id="autarkyRate"></span>%</p>
+                    <p>Kosten (geschätzt): <span id="estimatedCosts"></span> €</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Abschnitt 5: Persönliche Energiebilanz -->
+        <section id="energiebilanz" class="card animate delay-3">
+            <h2>Persönlicher Energiebedarf und Einsparpotenziale</h2>
+            
+            <p>Der durchschnittliche Energiebedarf in Deutschland beträgt etwa 120 kWh pro Person und Tag (120 kWh/dp). Dieser Wert setzt sich aus verschiedenen Bereichen zusammen:</p>
+            
+            <div class="chart-container">
+                <canvas id="personalEnergyChart"></canvas>
+            </div>
+            
+            <h3>Beispiel: Energiebedarf für Wärme</h3>
+            <p>Ein heißes Bad (150 l Wasser von 10°C auf 50°C) benötigt etwa 7 kWh Energie. Bei wöchentlichem Baden ergibt das einen täglichen Beitrag von 1 kWh/dp zur persönlichen Energiebilanz.</p>
+            
+            <div class="interactive">
+                <h3>Persönlicher Energierechner</h3>
+                
+                <div class="form-group">
+                    <label for="bathFrequency">Wie oft baden Sie pro Woche?</label>
+                    <input type="number" id="bathFrequency" min="0" max="7" value="1">
+                </div>
+                
+                <div class="form-group">
+                    <label for="showerDuration">Durchschnittliche Duschdauer (Minuten/Tag):</label>
+                    <input type="number" id="showerDuration" min="0" max="60" value="10">
+                </div>
+                
+                <div class="form-group">
+                    <label for="washingFrequency">Wie oft waschen Sie pro Woche?</label>
+                    <input type="number" id="washingFrequency" min="0" max="14" value="3">
+                </div>
+                
+                <div class="form-group">
+                    <label for="heatingArea">Beheizte Wohnfläche (m²):</label>
+                    <input type="number" id="heatingArea" min="10" max="500" value="70">
+                </div>
+                
+                <div class="form-group">
+                    <label for="carDistance">Tägliche Autofahrstrecke (km):</label>
+                    <input type="number" id="carDistance" min="0" max="500" value="20">
+                </div>
+                
+                <div class="form-group">
+                    <label for="publicTransport">ÖPNV-Nutzung (Stunden/Woche):</label>
+                    <input type="number" id="publicTransport" min="0" max="50" value="5">
+                </div>
+                
+                <button id="calculatePersonalEnergy">Berechnen</button>
+                
+                <div id="personalEnergyResult" class="result" style="display: none;">
+                    <h4>Ihre persönliche Energiebilanz:</h4>
+                    <p>Gesamtenergiebedarf: <span id="totalEnergy"></span> kWh/dp</p>
+                    <p>Vergleich mit Durchschnitt (120 kWh/dp): <span id="comparison"></span></p>
+                    
+                    <div class="chart-container" style="height: 300px;">
+                        <canvas id="personalBreakdownChart"></canvas>
+                    </div>
+                    
+                    <h4>Einsparpotenziale:</h4>
+                    <ul id="savingTips">
+                        <!-- Wird per JavaScript gefüllt -->
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>Mobilität und Energie</h3>
+            <p>Die Nutzung eines Pkws (Durchschnittsverbrauch 7,4 l/100 km) für täglich 32 km (Hin- und Rückfahrt) ergibt einen Energiebedarf von etwa 24 kWh/dp. Bei vollbesetzten Bussen oder Zügen ist dieser Wert deutlich niedriger.</p>
+            
+            <div class="comparison">
+                <div class="comparison-item">
+                    <div class="comparison-icon">🚗</div>
+                    <h4>Auto (allein)</h4>
+                    <p>24 kWh/dp</p>
+                </div>
+                <div class="comparison-item">
+                    <div class="comparison-icon">🚗👥</div>
+                    <h4>Auto (4 Personen)</h4>
+                    <p>6 kWh/dp</p>
+                </div>
+                <div class="comparison-item">
+                    <div class="comparison-icon">🚌</div>
+                    <h4>Bus</h4>
+                    <p>2 kWh/dp</p>
+                </div>
+                <div class="comparison-item">
+                    <div class="comparison-icon">🚆</div>
+                    <h4>Zug</h4>
+                    <p>1,5 kWh/dp</p>
+                </div>
+                <div class="comparison-item">
+                    <div class="comparison-icon">🚲</div>
+                    <h4>Fahrrad</h4>
+                    <p>0,2 kWh/dp</p>
+                </div>
+            </div>
+            
+            <h3>Elektrogeräte im Haushalt</h3>
+            <p>Selbst vermeintlich kleine Energieverbräuche summieren sich:</p>
+            <ul>
+                <li>Ein ständig eingestecktes Ladekabel verbraucht etwa 2,5 kWh pro Jahr (0,007 kWh/dp)</li>
+                <li>Ein Kühlschrank benötigt etwa 1-2 kWh/dp</li>
+                <li>Ein PC im Dauerbetrieb kann 5-10 kWh/dp verbrauchen</li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2023 Energieversorgung verstehen | Physikunterricht</p>
+        <p class="sources">
+            Quellen: Unterrichtsmaterialien zur Energieversorgung, Statistisches Bundesamt, Studien zu Energiedörfern, eigene Berechnungen
+        </p>
+    </footer>
+
+    <!-- JavaScript-Bibliotheken -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                themeToggle.textContent = 'Light Mode';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.textContent = 'Dark Mode';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Beim Laden prüfen, welcher Modus gespeichert ist
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeToggle.textContent = 'Light Mode';
+        }
+
+        // Reversible vs. irreversible Vorgänge
+        document.getElementById('checkProcess').addEventListener('click', () => {
+            const process = document.getElementById('processSelect').value;
+            const resultDiv = document.getElementById('processResult');
+            const explanation = document.getElementById('processExplanation');
+            
+            if (!process) {
+                alert('Bitte wählen Sie einen Vorgang aus');
+                return;
+            }
+            
+            let text = '';
+            switch(process) {
+                case 'pendel':
+                    text = 'Die Pendelbewegung ohne Reibung ist ein reversibler Vorgang. Die Energie bleibt erhalten und der Prozess könnte theoretisch unendlich lange ablaufen oder rückwärts abgespielt werden.';
+                    break;
+                case 'brause':
+                    text = 'Das Auflösen einer Brausetablette ist ein irreversibler Vorgang. Die Teilchen vermischen sich mit dem Wasser und geben Energie in Form von Wärme an die Umgebung ab. Die Entropie des Systems erhöht sich.';
+                    break;
+                case 'fall':
+                    text = 'Der Fall eines Balles mit Reibung ist irreversibel. Ein Teil der Energie wird in Wärme umgewandelt und an die Umgebung abgegeben, was zu einer Erhöhung der Entropie führt.';
+                    break;
+                case 'mischen':
+                    text = 'Das Vermischen von Wasser und Tinte ist irreversibel. Die Teilchen verteilen sich gleichmäßig und die Entropie erhöht sich. Ohne Energieaufwand kann dieser Prozess nicht rückgängig gemacht werden.';
+                    break;
+            }
+            
+            explanation.textContent = text;
+            resultDiv.style.display = 'block';
+        });
+
+        // Entropie-Rechner für Wassererwärmung
+        document.getElementById('calculateEntropy').addEventListener('click', () => {
+            const mass = parseFloat(document.getElementById('waterMass').value);
+            const startTemp = parseFloat(document.getElementById('startTemp').value);
+            const endTemp = parseFloat(document.getElementById('endTemp').value);
+            
+            if (isNaN(mass) || isNaN(startTemp) || isNaN(endTemp) || endTemp <= startTemp) {
+                alert('Bitte gültige Werte eingeben (Endtemperatur > Anfangstemperatur)');
+                return;
+            }
+            
+            // Spezifische Wärmekapazität von Wasser in kJ/(kg·K)
+            const c = 4.2;
+            const deltaT = endTemp - startTemp;
+            
+            // Energie in kJ
+            const energy = mass * c * deltaT;
+            
+            // Mittlere Temperatur in Kelvin für die Entropieberechnung
+            const T1 = startTemp + 273.15;
+            const T2 = endTemp + 273.15;
+            const T_avg = (T1 + T2) / 2;
+            
+            // Entropieänderung in kJ/K
+            const deltaS = energy / T_avg;
+            
+            document.getElementById('energyNeeded').textContent = energy.toFixed(2);
+            document.getElementById('entropyChange').textContent = deltaS.toFixed(4);
+            document.getElementById('entropyResult').style.display = 'block';
+        });
+
+        // Energieflussdiagramm für Kraftwerk
+        function drawEnergyFlowChart() {
+            const svg = document.getElementById('energyFlowChart');
+            svg.innerHTML = '';
+            
+            // Brennkammer
+            svg.innerHTML += `
+                <rect x="50" y="100" width="100" height="150" fill="#e74c3c" opacity="0.7" />
+                <text x="100" y="120" text-anchor="middle" fill="white">Brennkammer</text>
+                <text x="100" y="140" text-anchor="middle" fill="white">100 Einheiten</text>
+                <text x="100" y="160" text-anchor="middle" fill="white">Energie</text>
+                
+                <!-- Pfeil zur Turbine -->
+                <path d="M150 175 L250 175" stroke="red" stroke-width="3" fill="none" marker-end="url(#arrowhead)" />
+                <text x="200" y="160" text-anchor="middle" fill="red">60 Einheiten</text>
+                
+                <!-- Pfeil zum Kühlturm -->
+                <path d="M100 250 L100 280 L250 280" stroke="red" stroke-width="3" fill="none" marker-end="url(#arrowhead)" />
+                <text x="175" y="300" text-anchor="middle" fill="red">40 Einheiten</text>
+            `;
+            
+            // Turbine und Generator
+            svg.innerHTML += `
+                <rect x="250" y="100" width="150" height="75" fill="#3498db" opacity="0.7" />
+                <text x="325" y="125" text-anchor="middle" fill="white">Turbine & Generator</text>
+                <text x="325" y="145" text-anchor="middle" fill="white">60 → 30 Einheiten</text>
+                
+                <!-- Pfeil zum Stromnetz -->
+                <path d="M400 137.5 L500 137.5" stroke="red" stroke-width="3" fill="none" marker-end="url(#arrowhead)" />
+                <text x="450" y="122" text-anchor="middle" fill="red">30 Einheiten</text>
+                
+                <!-- Pfeil zur Kühlung -->
+                <path d="M325 175 L325 280" stroke="red" stroke-width="3" fill="none" marker-end="url(#arrowhead)" />
+                <text x="277.5" y="230" text-anchor="middle" fill="red">30 Einheiten</text>
+            `;
+            
+            // Kühlturm
+            svg.innerHTML += `
+                <rect x="250" y="280" width="150" height="70" fill="#95a5a6" opacity="0.7" />
+                <text x="325" y="300" text-anchor="middle" fill="white">Kühlturm</text>
+                <text x="325" y="320" text-anchor="middle" fill="white">70 Einheiten</text>
+                
+                <!-- Pfeil zur Umgebung -->
+                <path d="M325 350 L325 380" stroke="red" stroke-width="3" fill="none" marker-end="url(#arrowhead)" />
+                <text x="385" y="370" text-anchor="middle" fill="red">70 Einheiten</text>
+            `;
+            
+            // Stromnetz
+            svg.innerHTML += `
+                <rect x="500" y="100" width="100" height="75" fill="#f1c40f" opacity="0.7" />
+                <text x="550" y="125" text-anchor="middle" fill="black">Stromnetz</text>
+                <text x="550" y="145" text-anchor="middle" fill="black">30 Einheiten</text>
+            `;
+            
+            // Umgebung
+            svg.innerHTML += `
+                <rect x="250" y="380" width="150" height="50" fill="#2ecc71" opacity="0.7" />
+                <text x="325" y="405" text-anchor="middle" fill="white">Umgebung</text>
+                <text x="325" y="425" text-anchor="middle" fill="white">70 Einheiten</text>
+            `;
+            
+            // Wirkungsgrad
+            svg.innerHTML += `
+                <text x="650" y="150" text-anchor="start" fill="black">Wirkungsgrad:</text>
+                <text x="650" y="170" text-anchor="start" fill="black">η = 30/100 = 30%</text>
+            `;
+            
+            // Arrowhead definition
+            svg.innerHTML += `
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" fill="red" />
+                    </marker>
+                </defs>
+            `;
+        }
+        
+        // BHKW-Diagramm
+        function drawBHKWDiagram() {
+            const svg = document.getElementById('bhkwDiagram');
+            svg.innerHTML = '';
+            
+            // Brennstoffzufuhr
+            svg.innerHTML += `
+                <rect x="50" y="50" width="100" height="50" fill="#e67e22" opacity="0.7" />
+                <text x="100" y="75" text-anchor="middle" fill="white">Brennstoff</text>
+                <text x="100" y="90" text-anchor="middle" fill="white">(z.B. Gas)</text>
+                
+                <!-- Pfeil zum Motor -->
+                <path d="M150 75 L250 75" stroke="#e67e22" stroke-width="3" fill="none" marker-end="url(#arrowhead-orange)" />
+            `;
+            
+            // Motor
+            svg.innerHTML += `
+                <rect x="250" y="25" width="150" height="100" fill="#e74c3c" opacity="0.7" />
+                <text x="325" y="50" text-anchor="middle" fill="white">Verbrennungsmotor</text>
+                <text x="325" y="70" text-anchor="middle" fill="white">100 Einheiten</text>
+                <text x="325" y="90" text-anchor="middle" fill="white">Energie</text>
+                
+                <!-- Pfeil zum Generator -->
+                <path d="M400 75 L500 75" stroke="#3498db" stroke-width="3" fill="none" marker-end="url(#arrowhead-blue)" />
+                <text x="450" y="60" text-anchor="middle" fill="#3498db">35 Einheiten</text>
+                
+                <!-- Pfeil zur Wärme -->
+                <path d="M325 125 L325 175" stroke="#e74c3c" stroke-width="3" fill="none" marker-end="url(#arrowhead-red)" />
+                <text x="350" y="150" text-anchor="start" fill="#e74c3c">55 Einheiten</text>
+            `;
+            
+            // Generator
+            svg.innerHTML += `
+                <rect x="500" y="25" width="150" height="100" fill="#3498db" opacity="0.7" />
+                <text x="575" y="50" text-anchor="middle" fill="white">Generator</text>
+                <text x="575" y="70" text-anchor="middle" fill="white">35 → 30 Einheiten</text>
+                
+                <!-- Pfeil zum Stromnetz -->
+                <path d="M650 75 L750 75" stroke="#3498db" stroke-width="3" fill="none" marker-end="url(#arrowhead-blue)" />
+                <text x="700" y="60" text-anchor="middle" fill="#3498db">30 Einheiten</text>
+                
+                <!-- Pfeil zur Wärme -->
+                <path d="M575 125 L575 175" stroke="#e74c3c" stroke-width="3" fill="none" marker-end="url(#arrowhead-red)" />
+                <text x="520" y="150" text-anchor="middle" fill="#e74c3c">5 Einheiten</text>
+            `;
+            
+            // Wärmenutzung
+            svg.innerHTML += `
+                <rect x="290" y="175" width="300" height="100" fill="#e74c3c" opacity="0.7" />
+                <text x="440" y="200" text-anchor="middle" fill="white">Wärmenutzung</text>
+                <text x="440" y="220" text-anchor="middle" fill="white">60 Einheiten</text>
+                <text x="440" y="240" text-anchor="middle" fill="white">(Heizung, Warmwasser)</text>
+                
+                <!-- Pfeil zur Umgebung -->
+                <path d="M400 275 L400 325" stroke="#e74c3c" stroke-width="3" fill="none" marker-end="url(#arrowhead-red)" />
+                <text x="340" y="300" text-anchor="middle" fill="#e74c3c">10 Einheiten</text>
+            `;
+            
+            // Stromnetz
+            svg.innerHTML += `
+                <rect x="750" y="25" width="100" height="100" fill="#f1c40f" opacity="0.7" />
+                <text x="800" y="50" text-anchor="middle" fill="black">Stromnetz</text>
+                <text x="800" y="70" text-anchor="middle" fill="black">30 Einheiten</text>
+            `;
+            
+            // Umgebung
+            svg.innerHTML += `
+                <rect x="350" y="325" width="100" height="50" fill="#2ecc71" opacity="0.7" />
+                <text x="400" y="350" text-anchor="middle" fill="white">Umgebung</text>
+                <text x="400" y="370" text-anchor="middle" fill="white">10 Einheiten</text>
+            `;
+            
+            // Wirkungsgrad
+            svg.innerHTML += `
+                <text x="650" y="150" text-anchor="start" fill="black">Elektrischer Wirkungsgrad:</text>
+                <text x="650" y="170" text-anchor="start" fill="black">η_el = 30/100 = 30%</text>
+                <text x="650" y="190" text-anchor="start" fill="black">Thermischer Wirkungsgrad:</text>
+                <text x="650" y="210" text-anchor="start" fill="black">η_th = 60/100 = 60%</text>
+                <text x="650" y="230" text-anchor="start" fill="black">Gesamtwirkungsgrad:</text>
+                <text x="650" y="250" text-anchor="start" fill="black">η_ges = 90%</text>
+            `;
+            
+            // Arrowhead definitions
+            svg.innerHTML += `
+                <defs>
+                    <marker id="arrowhead-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#e67e22" />
+                    </marker>
+                    <marker id="arrowhead-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#3498db" />
+                    </marker>
+                    <marker id="arrowhead-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#e74c3c" />
+                    </marker>
+                </defs>
+            `;
+        }
+        
+        // Diagramme initialisieren
+        document.addEventListener('DOMContentLoaded', () => {
+            drawEnergyFlowChart();
+            drawBHKWDiagram();
+            
+            // Energie-Mix-Chart
+            const energyMixCtx = document.getElementById('energyMixChart').getContext('2d');
+            const energyMixChart = new Chart(energyMixCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Kohle', 'Erdgas', 'Kernenergie', 'Wind', 'Solar', 'Wasser', 'Biomasse', 'Andere'],
+                    datasets: [{
+                        data: [24.1, 26.6, 11.9, 23.5, 9.0, 3.0, 1.5, 0.4],
+                        backgroundColor: [
+                            '#2c3e50', '#34495e', '#7f8c8d', '#3498db', '#f1c40f', '#2980b9', '#27ae60', '#e74c3c'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Energiemix in Deutschland (2022)',
+                            font: {
+                                size: 16
+                            }
+                        },
+                        legend: {
+                            position: 'right'
+                        }
+                    }
+                }
+            });
+            
+            // Wildpoldsried Chart
+            const wildpoldsriedCtx = document.getElementById('wildpoldsriedChart').getContext('2d');
+            const wildpoldsriedChart = new Chart(wildpoldsriedCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Windenergie', 'Photovoltaik', 'Biogas', 'Gesamt'],
+                    datasets: [{
+                        label: 'Erzeugung (MWh/Jahr)',
+                        data: [12000, 4000, 2000, 18000],
+                        backgroundColor: '#3498db'
+                    }, {
+                        label: 'Verbrauch (MWh/Jahr)',
+                        data: [0, 0, 0, 2000],
+                        backgroundColor: '#e74c3c'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            stacked: true
+                        },
+                        y: {
+                            stacked: false,
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Energiebilanz Wildpoldsried',
+                            font: {
+                                size: 16
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Persönliche Energiebilanz Chart
+            const personalEnergyCtx = document.getElementById('personalEnergyChart').getContext('2d');
+            const personalEnergyChart = new Chart(personalEnergyCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Heizen', 'Warmwasser', 'Elektrogeräte', 'Mobilität', 'Beleuchtung', 'Sonstiges'],
+                    datasets: [{
+                        data: [40, 15, 20, 20, 5, 20],
+                        backgroundColor: [
+                            '#e74c3c', '#e67e22', '#f1c40f', '#3498db', '#2ecc71', '#9b59b6'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Durchschnittlicher Energiebedarf in Deutschland (120 kWh/dp)',
+                            font: {
+                                size: 16
+                            }
+                        },
+                        legend: {
+                            position: 'right'
+                        }
+                    }
+                }
+            });
+            
+            // Country selector
+            document.getElementById('countrySelect').addEventListener('change', function() {
+                const country = this.value;
+                let data;
+                
+                switch(country) {
+                    case 'deutschland':
+                        energyMixChart.data.datasets[0].data = [24.1, 26.6, 11.9, 23.5, 9.0, 3.0, 1.5, 0.4];
+                        energyMixChart.options.plugins.title.text = 'Energiemix in Deutschland (2022)';
+                        break;
+                    case 'frankreich':
+                        energyMixChart.data.datasets[0].data = [2.5, 15.8, 62.5, 7.2, 3.5, 6.0, 2.0, 0.5];
+                        energyMixChart.options.plugins.title.text = 'Energiemix in Frankreich (2022)';
+                        break;
+                    case 'usa':
+                        energyMixChart.data.datasets[0].data = [19.5, 38.4, 18.2, 9.2, 3.4, 6.0, 4.8, 0.5];
+                        energyMixChart.options.plugins.title.text = 'Energiemix in den USA (2022)';
+                        break;
+                    case 'china':
+                        energyMixChart.data.datasets[0].data = [56.8, 8.4, 5.0, 6.8, 4.2, 17.0, 1.0, 0.8];
+                        energyMixChart.options.plugins.title.text = 'Energiemix in China (2022)';
+                        break;
+                    case 'norwegen':
+                        energyMixChart.data.datasets[0].data = [0.5, 2.5, 0, 2.0, 0.5, 93.0, 1.0, 0.5];
+                        energyMixChart.options.plugins.title.text = 'Energiemix in Norwegen (2022)';
+                        break;
+                }
+                
+                energyMixChart.update();
+            });
+            
+            // Simulation Energiedorf
+            document.getElementById('simulateEnergy').addEventListener('click', function() {
+                const communityType = document.getElementById('communityType').value;
+                const energyDemand = parseInt(document.getElementById('energyDemand').value);
+                const windPotential = parseInt(document.getElementById('windPotential').value);
+                const solarPotential = parseInt(document.getElementById('solarPotential').value);
+                const biomassPotential = parseInt(document.getElementById('biomassPotential').value);
+                
+                // Debug-Ausgabe um zu prüfen, ob die Werte korrekt gelesen werden
+                console.log("Community Type:", communityType);
+                console.log("Energy Demand:", energyDemand);
+                console.log("Wind Potential:", windPotential);
+                console.log("Solar Potential:", solarPotential);
+                console.log("Biomass Potential:", biomassPotential);
+                
+                // Berechnungen basierend auf den Eingaben
+                const windShare = (windPotential / 10) * 0.5;  // Erhöhten Einfluss von Wind
+                const solarShare = ((solarPotential - 800) / 1400) * 0.5;  // Erhöhten Einfluss von Solar
+                const biomassShare = (biomassPotential / 10) * 0.4;  // Erhöhten Einfluss von Biomasse
+                
+                // Sicherstellen, dass die Werte nicht negativ sind
+                const safeWindShare = Math.max(0, windShare);
+                const safeSolarShare = Math.max(0, solarShare);
+                const safeBiomassShare = Math.max(0, biomassShare);
+                
+                // Normalisieren, dass die Summe 1 ergibt
+                const total = safeWindShare + safeSolarShare + safeBiomassShare;
+                
+                // Vermeiden von Division durch Null
+                const normalizedWind = total > 0 ? safeWindShare / total * 100 : 0;
+                const normalizedSolar = total > 0 ? safeSolarShare / total * 100 : 0;
+                const normalizedBiomass = total > 0 ? safeBiomassShare / total * 100 : 0;
+                
+                // Autarkiegrad berechnen (zwischen 50% und 100%)
+                const autarkyRate = 50 + (50 * (windPotential + biomassPotential + (solarPotential/2200*10))) / 30;
+                const safeAutarkyRate = Math.min(100, Math.round(autarkyRate));
+                
+                // Kosten schätzen
+                const baseCost = communityType === 'dorf' ? energyDemand * 1000 : energyDemand * 1500;
+                const costMultiplier = 1 + (10 - windPotential)/15 + (2200 - solarPotential)/2200 + (10 - biomassPotential)/15;
+                const estimatedCosts = Math.round(baseCost * costMultiplier);
+                
+                // Ergebnisse anzeigen
+                document.getElementById('autarkyRate').textContent = safeAutarkyRate;
+                document.getElementById('estimatedCosts').textContent = estimatedCosts.toLocaleString('de-DE') + " €";
+                
+                
+                // Vorhandenes Chart entfernen, falls vorhanden
+                if (window.simulationChart && typeof window.simulationChart.destroy === 'function') {
+                    window.simulationChart.destroy();
+                }
+
+                //Neues Chart erstellen
+                const simulationCtx = document.getElementById('simulationChart').getContext('2d');
+                
+                window.simulationChart = new Chart(simulationCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Windenergie', 'Solarenergie', 'Biomasse'],
+                        datasets: [{
+                            data: [
+                                Math.round(normalizedWind),
+                                Math.round(normalizedSolar),
+                                Math.round(normalizedBiomass)
+                            ],
+                            backgroundColor: [
+                                '#3498db', '#f1c40f', '#27ae60'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Empfohlener Energiemix',
+                                font: {
+                                    size: 14
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.label}: ${context.raw}%`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+                
+                // Ergebnis anzeigen
+                document.getElementById('simulationResult').style.display = 'block';
+                
+                // Scrollen zum Ergebnis für bessere Sichtbarkeit
+                document.getElementById('simulationResult').scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // Slider Werte anzeigen
+            document.getElementById('windPotential').addEventListener('input', function() {
+                document.getElementById('windValue').textContent = this.value;
+            });
+            
+            document.getElementById('solarPotential').addEventListener('input', function() {
+                document.getElementById('solarValue').textContent = this.value;
+            });
+            
+            document.getElementById('biomassPotential').addEventListener('input', function() {
+                document.getElementById('biomassValue').textContent = this.value;
+            });
+            
+            // Persönlicher Energierechner
+            document.getElementById('calculatePersonalEnergy').addEventListener('click', function() {
+                const bathFrequency = parseInt(document.getElementById('bathFrequency').value);
+                const showerDuration = parseInt(document.getElementById('showerDuration').value);
+                const washingFrequency = parseInt(document.getElementById('washingFrequency').value);
+                const heatingArea = parseInt(document.getElementById('heatingArea').value);
+                const carDistance = parseInt(document.getElementById('carDistance').value);
+                const publicTransport = parseInt(document.getElementById('publicTransport').value);
+                
+                // Berechnungen (vereinfachte Modelle)
+                const bathEnergy = (bathFrequency * 7) / 7; // kWh/dp
+                const showerEnergy = (showerDuration * 0.1 * 7) / 7; // kWh/dp (0.1 kWh pro Minute)
+                const washingEnergy = (washingFrequency * 1.5) / 7; // kWh/dp
+                const heatingEnergy = heatingArea * 0.15; // kWh/dp (0.15 kWh/m²)
+                const carEnergy = carDistance * 0.074; // kWh/dp (7.4 l/100km)
+                const transportEnergy = publicTransport * 0.2 / 7; // kWh/dp
+                
+                const totalEnergy = bathEnergy + showerEnergy + washingEnergy + heatingEnergy + carEnergy + transportEnergy + 5; // +5 für Grundlast
+                
+                // Ergebnisse anzeigen
+                document.getElementById('totalEnergy').textContent = totalEnergy.toFixed(1);
+                
+                const comparison = totalEnergy / 120 * 100;
+                let comparisonText;
+                if (comparison < 80) {
+                    comparisonText = `${Math.round(comparison)}% (unter dem Durchschnitt)`;
+                } else if (comparison > 120) {
+                    comparisonText = `${Math.round(comparison)}% (über dem Durchschnitt)`;
+                } else {
+                    comparisonText = `${Math.round(comparison)}% (nahe am Durchschnitt)`;
+                }
+                document.getElementById('comparison').textContent = comparisonText;
+                
+                // Breakdown Chart
+                const breakdownCtx = document.getElementById('personalBreakdownChart').getContext('2d');
+                
+                if (window.breakdownChart) {
+                    window.breakdownChart.destroy();
+                }
+                
+                window.breakdownChart = new Chart(breakdownCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Baden/Duschen', 'Waschen', 'Heizen', 'Auto', 'ÖPNV', 'Grundlast'],
+                        datasets: [{
+                            label: 'Energieverbrauch (kWh/dp)',
+                            data: [
+                                (bathEnergy + showerEnergy).toFixed(1),
+                                washingEnergy.toFixed(1),
+                                heatingEnergy.toFixed(1),
+                                carEnergy.toFixed(1),
+                                transportEnergy.toFixed(1),
+                                5
+                            ],
+                            backgroundColor: [
+                                '#3498db', '#9b59b6', '#e74c3c', '#f1c40f', '#2ecc71', '#95a5a6'
+                            ]
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        },
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Ihre persönliche Energiebilanz',
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        }
+                    }
+                });
+                
+                // Einspartipps generieren
+                const tipsList = document.getElementById('savingTips');
+                tipsList.innerHTML = '';
+                
+                const tips = [];
+                
+                if (bathFrequency > 2) {
+                    tips.push('Reduzieren Sie Ihre Bäder auf 1-2 pro Woche und duschen Sie stattdessen.');
+                }
+                
+                if (showerDuration > 10) {
+                    tips.push(`Verkürzen Sie Ihre Duschzeit von ${showerDuration} auf 5-7 Minuten.`);
+                }
+                
+                if (washingFrequency > 4) {
+                    tips.push('Waschen Sie nur mit voller Maschine und reduzieren Sie die Anzahl auf 2-3 pro Woche.');
+                }
+                
+                if (heatingArea > 80) {
+                    tips.push('Senken Sie die Raumtemperatur um 1°C und schließen Sie Türen zu wenig genutzten Räumen.');
+                }
+                
+                if (carDistance > 30) {
+                    tips.push('Nutzen Sie für kurze Strecken das Fahrrad oder öffentliche Verkehrsmittel.');
+                }
+                
+                if (tips.length === 0) {
+                    tips.push('Ihr Energieverbrauch ist bereits relativ effizient. Weiter so!');
+                } else {
+                    tips.unshift('Mögliche Einsparmaßnahmen:');
+                }
+                
+                tips.forEach(tip => {
+                    const li = document.createElement('li');
+                    li.textContent = tip;
+                    tipsList.appendChild(li);
+                });
+                
+                document.getElementById('personalEnergyResult').style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
